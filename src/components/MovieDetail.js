@@ -6,8 +6,11 @@ import SmilarMovie from "./SimilarMovie";
 import Cast from "./Cast";
 
 function MovieDetail({id, coverImg, title, runtime, description, genres, rating, cast}) {
+  /* state */
   const [smilarMovies, setSmilarMovies] = useState([]);
   const [smilarIsShow, setSmilarIsShow] = useState(false);
+  
+  /* function */
   const getSmilarMovies = async() => {
     const json = await (await fetch(
       `https://yts.mx/api/v2/movie_suggestions.json?movie_id=${id}`
@@ -16,14 +19,24 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
     setSmilarMovies(json.data.movies);
     setSmilarIsShow(true);
   };
+  const handleImgError = (event) => {
+    event.target.src = '../icon/movie.png';
+  };
+
+  /* useEffect */
   useEffect(() => {
     getSmilarMovies(smilarMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+  
   return (
     <div>
       <div className={styles.movie}>
-        <img src={coverImg} alt={title} className={styles.movie__img}/>
+        <img 
+          src={!coverImg ? '../icon/movie.png' : coverImg} 
+          alt={title} 
+          className={styles.movie__img}
+          onError={handleImgError} />
         <div>
           <h2 className={styles.movie__title}>{title}</h2>
           <h3 className={styles.movie__runtime}>
@@ -45,7 +58,7 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
               ))}
             </ul>
           ) : null}
-          {cast.length > 0 ? (
+          {cast && cast.length > 0 ? (
               <div className={styles.cast__warp}>
                 <h3 className={styles.cast__header}>📌 Top cast</h3>
                 <div className={styles.cast__flex__container}>

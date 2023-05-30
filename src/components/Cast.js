@@ -2,16 +2,20 @@ import PropTypes from "prop-types";
 import styles from "./Cast.module.css";
 
 function Cast({characterName, name, urlSmallImg}) {
+    /* function */
     const handleImgError = (event) => {
         event.target.src = '../icon/user.png';
     };
-
-    console.log();
-
+    
     return (
         <div className={styles.flex__item}>
             <div className={styles.box}>
-                <img src={!urlSmallImg ? '../icon/user.png' : urlSmallImg} alt={characterName} className={styles.profile} onError={handleImgError}/>
+                <img 
+                    src={!urlSmallImg ? '../icon/user.png' : urlSmallImg} 
+                    alt={characterName} 
+                    className={styles.profile} 
+                    onError={handleImgError}
+                />
             </div>
             <div className={styles.name}>
                 <span className={styles.text__1}>{name}</span>

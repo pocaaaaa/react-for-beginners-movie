@@ -4,9 +4,12 @@ import MovieDetail from "../components/MovieDetail";
 import styles from "./Detail.module.css";
 
 function Detail() {
+  /* state */
   const {id} = useParams();
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState({});
+
+  /* function */
   const getMovie = async() => {
     const json = await (await fetch(
       `https://yts.mx/api/v2/movie_details.json?movie_id=${id}&with_images=true&with_cast=true`
@@ -14,11 +17,13 @@ function Detail() {
     setMovie(json.data.movie);
     setLoading(false);
   };
+
+  /* useEffect */
   useEffect(() => {
     getMovie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-  console.log(movie);
+
   return (
     <div>
       {loading ? (

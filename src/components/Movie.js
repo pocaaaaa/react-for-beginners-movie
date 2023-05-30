@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 
 function Movie({id, coverImg, title, year, summary, genres}) {
+  /* function */
   const handleImgError = (event) => {
     event.target.src = '../icon/movie.png';
   };
