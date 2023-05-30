@@ -9,7 +9,7 @@ function Detail() {
   const [movie, setMovie] = useState({});
   const getMovie = async() => {
     const json = await (await fetch(
-      `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
+      `https://yts.mx/api/v2/movie_details.json?movie_id=${id}&with_images=true&with_cast=true`
     )).json();
     setMovie(json.data.movie);
     setLoading(false);
@@ -18,6 +18,7 @@ function Detail() {
     getMovie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+  console.log(movie);
   return (
     <div>
       {loading ? (
@@ -36,6 +37,7 @@ function Detail() {
             description={movie.description_full}
             genres={movie.genres}
             rating={movie.rating}
+            cast={movie.cast}
           />
         </div>
       )}

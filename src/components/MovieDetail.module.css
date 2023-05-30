@@ -22,8 +22,26 @@
     0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
 }
 
-.sugg__warp {
+.cast__warp {
   margin-top: 30px;
+  padding-bottom: 20px;
+}
+
+.cast__header {
+  margin: 0;
+  font-weight: 300;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.cast__flex__container{
+  display: flex;
+}
+
+.sugg__warp {
+  margin-top: 20px;
+  padding-bottom: 20px;
 }
 
 .sugg__header {

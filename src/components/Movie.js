@@ -3,9 +3,17 @@ import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 
 function Movie({id, coverImg, title, year, summary, genres}) {
+  const handleImgError = (event) => {
+    event.target.src = '../icon/movie.png';
+  };
+
   return (
     <div className={styles.movie}>
-      <img src={coverImg} alt={title} className={styles.movie__img}/>
+      <img 
+        src={!coverImg ? '../icon/movie.png' : coverImg} 
+        alt={title} 
+        className={styles.movie__img}
+        onError={handleImgError} />
       <div>
         <h2 className={styles.movie__title}>
           <Link to={`/movie/${id}`}>{title}</Link>
