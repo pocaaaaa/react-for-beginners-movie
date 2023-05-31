@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   /* state */
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [moviesCount, setMoviesCount] = useState(0);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [searchValue, setSearchValue] = useState("");
@@ -16,13 +18,14 @@ function Home() {
     const json = await (await fetch(
       `https://yts.mx/api/v2/list_movies.json?sort_by=year&order_by=desc&page=${page}&query_term=${search}`
     )).json();
-    console.log(json);
-    if(json.data.movie_count > 0) {
+    const count = json.data.movie_count;
+    if(count > 0) {
       if(searchType === "P") setMovies([...movies, ...json.data.movies]);
       else setMovies([...json.data.movies]);
     } else {
       setMovies([]);
     }
+    setMoviesCount(count);
     setLoading(false);
   };
   const moreMovies = () => {
@@ -56,6 +59,7 @@ function Home() {
             <div className={styles.search}>
               <input className={styles.search__input} onChange={searchOnChange} onKeyDown={handleKeyDown} value={searchValue} type="text" placeholder="Search"/>
               <img onClick={searchMovies} className={styles.search__img} src="../icon/search.png"/>
+              <Link to="/fav"><img className={styles.fav__home} src="../icon/fav.png" /></Link>
             </div>
             {movies.length === 0 ? (
                 <div className={styles.movies__nodata}>
@@ -76,11 +80,13 @@ function Home() {
                       />
                     ))}
                   </div>
-                  <div className={styles.btn__wrap}>
-                    <button onClick={moreMovies} className={styles.btn}>
-                      더보기 ({page})
-                    </button>
-                  </div>
+                  {moviesCount - (page * 20) > 20 ? (
+                    <div className={styles.btn__wrap}>
+                      <button onClick={moreMovies} className={styles.btn}>
+                        더보기 ({page})
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
               )
             }

@@ -1,12 +1,40 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
+import { useEffect, useState } from "react";
 
 function Movie({id, coverImg, title, year, summary, genres}) {
+  const [isFav, setIsFav] = useState(false);
+
   /* function */
   const handleImgError = (event) => {
     event.target.src = '../icon/movie.png';
   };
+  const addFavList =  () => {
+    let favList = localStorage.getItem('favList');
+    favList = favList ? JSON.parse(favList) : [];
+    const addFavItem = {id, coverImg, title, year, summary, genres};
+    const newFavList = [...favList, addFavItem];
+    localStorage.setItem('favList', JSON.stringify(newFavList));
+  }
+  const removeFavList = () => {
+    let favList = localStorage.getItem('favList');
+    favList = favList ? JSON.parse(favList).filter(item => item.id !== id) : [];
+    localStorage.setItem('favList', JSON.stringify([...favList]));
+  }
+  const favClick = () => {
+    setIsFav((curr) => {
+      (curr) ? removeFavList() : addFavList();
+      return !curr;  
+    });
+  };
+  
+  /* useEffect */
+  useEffect(() => {
+    let favList = localStorage.getItem('favList');
+    favList = favList ? JSON.parse(favList).filter(item => item.id === id) : [];
+    if(favList.length > 0) setIsFav(true);
+  }, []);
 
   return (
     <div className={styles.movie}>
@@ -28,6 +56,17 @@ function Movie({id, coverImg, title, year, summary, genres}) {
             ))}
           </ul>
         ) : null}
+      </div>
+      <div></div>
+      <div>
+        <div className={styles.fav}>
+          <div className={`${styles.fav__fill__base} ${isFav ? styles.fav__fill : ''}`}>
+            <a onClick={favClick}>❤</a>
+          </div>
+          <div className={styles.fav__base}>
+            <span>❤</span>
+          </div>
+        </div>
       </div>
     </div>
   );

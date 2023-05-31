@@ -42,10 +42,10 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
           <h3 className={styles.movie__runtime}>
             {runtime} Minutes
             <div className={styles.star__ratings}>
-              <div className={`${styles.star__ratings__fill} ${styles.space__x__2}`} style={{width: `${rating * 10}%`}}>
+              <div className={`${styles.star__ratings__fill}`} style={{width: `${rating * 10}%`}}>
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
-              <div className={`${styles.star__ratings__base} ${styles.space__x__2}`}>
+              <div className={`${styles.star__ratings__base}`}>
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
             </div>
