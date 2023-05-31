@@ -19,7 +19,7 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
     setSmilarIsShow(true);
   };
   const handleImgError = (event) => {
-    event.target.src = '../icon/movie.png';
+    event.target.src = '/icon/movie.png';
   };
 
   /* useEffect */
@@ -32,7 +32,7 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
     <div>
       <div className={styles.movie}>
         <img 
-          src={!coverImg ? '../icon/movie.png' : coverImg} 
+          src={!coverImg ? '/icon/movie.png' : coverImg} 
           alt={title} 
           className={styles.movie__img}
           onError={handleImgError} />
