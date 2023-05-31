@@ -34,6 +34,7 @@ function Movie({id, coverImg, title, year, summary, genres}) {
     let favList = localStorage.getItem('favList');
     favList = favList ? JSON.parse(favList).filter(item => item.id === id) : [];
     if(favList.length > 0) setIsFav(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -61,7 +62,7 @@ function Movie({id, coverImg, title, year, summary, genres}) {
       <div>
         <div className={styles.fav}>
           <div className={`${styles.fav__fill__base} ${isFav ? styles.fav__fill : ''}`}>
-            <a onClick={favClick}>❤</a>
+            <span onClick={favClick}>❤</span>
           </div>
           <div className={styles.fav__base}>
             <span>❤</span>
