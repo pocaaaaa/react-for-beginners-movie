@@ -32,7 +32,7 @@ function Fav() {
     <div className={styles.container}>
       {loading ? (
           <div className={styles.loader}>
-            <img src="/icon/camera.gif" alt="loading" className={styles.loading}/>
+            <img src="./icon/camera.gif" alt="loading" className={styles.loading}/>
           </div>
         ) : (
           <div className={styles.moives__wrap}>

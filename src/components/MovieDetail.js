@@ -19,7 +19,7 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
     setSmilarIsShow(true);
   };
   const handleImgError = (event) => {
-    event.target.src = '/icon/movie.png';
+    event.target.src = './icon/movie.png';
   };
 
   /* useEffect */

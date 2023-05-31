@@ -9,7 +9,7 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
   
   /* function */
   const handleImgError = (event) => {
-    event.target.src = '/icon/movie.png';
+    event.target.src = './icon/movie.png';
   };
   const addFavList =  () => {
     let favList = localStorage.getItem('favList');
