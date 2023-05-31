@@ -94,3 +94,8 @@
   padding-top: 35px;
   cursor: pointer;
 }
+
+.loading {
+  width: 300px;
+  height: 300px;
+}

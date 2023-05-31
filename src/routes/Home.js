@@ -52,7 +52,7 @@ function Home() {
     <div className={styles.container}>
       {loading ? (
           <div className={styles.loader}>
-            <h1>Loading...</h1>
+            <img src="../icon/camera.gif" alt="loading" className={styles.loading}/>
           </div>
         ) : (
           <div className={styles.moives__wrap}>

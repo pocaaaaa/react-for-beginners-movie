@@ -12,9 +12,13 @@ function Fav() {
   /* function */
   const getFav = async() => {
     let favList = localStorage.getItem('favList');
-    favList = favList ? JSON.parse(favList) : []; 
+    favList = favList ? JSON.parse(favList) : [];
+    favList = search ? favList.filter(item => item.title.toLowerCase().includes(search.toLowerCase())) : favList;
     setFavList(favList);
     setLoading(false);
+  };
+  const onChangeSearch = (event) => {
+    setSearch(event.target.value);
   };
 
   /* useEffect */
@@ -27,13 +31,12 @@ function Fav() {
     <div className={styles.container}>
       {loading ? (
           <div className={styles.loader}>
-            <h1>Loading...</h1>
+            <img src="../icon/camera.gif" alt="loading" className={styles.loading}/>
           </div>
         ) : (
           <div className={styles.moives__wrap}>
             <div className={styles.search}>
-              <input className={styles.search__input} value={search} onChange={setSearch} type="text" placeholder="Search"/>
-              <img className={styles.search__img} alt="search" src="../icon/search.png"/>
+              <input className={styles.search__input} value={search} onChange={onChangeSearch} type="text" placeholder="Search"/>
               <Link to="/"><img className={styles.home} alt="fav" src="../icon/home.png" /></Link>
             </div>
             {favList.length === 0 ? (
