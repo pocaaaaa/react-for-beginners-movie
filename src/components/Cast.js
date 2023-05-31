@@ -4,14 +4,14 @@ import styles from "./Cast.module.css";
 function Cast({characterName, name, urlSmallImg}) {
     /* function */
     const handleImgError = (event) => {
-        event.target.src = './icon/user.png';
+        event.target.src = '../icon/user.png';
     };
     
     return (
         <div className={styles.flex__item}>
             <div className={styles.box}>
                 <img 
-                    src={!urlSmallImg ? './icon/user.png' : urlSmallImg} 
+                    src={!urlSmallImg ? '../icon/user.png' : urlSmallImg} 
                     alt={characterName} 
                     className={styles.profile} 
                     onError={handleImgError}
