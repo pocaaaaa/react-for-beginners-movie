@@ -84,3 +84,13 @@
   padding-top: 35px;
   cursor: pointer;
 }
+
+.fav__home {
+  position: absolute;
+  width: 42px;
+  top: -5px;
+  right: -32px;
+  margin: 0;
+  padding-top: 35px;
+  cursor: pointer;
+}

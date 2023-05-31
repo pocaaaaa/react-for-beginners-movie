@@ -6,12 +6,15 @@
   border-radius: 5px;
   color: #adaeb9;
   display: grid;
-  grid-template-columns: minmax(150px, 1fr) 2fr;
   grid-gap: 20px;
   text-decoration: none;
   color: inherit;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.movie__main__temp {
+  grid-template-columns: minmax(150px, 1fr) 2fr;
 }
 
 .movie__img {
@@ -53,4 +56,37 @@
 .movie__year {
   margin-right: 10px;
   font-size: 14px;
+}
+
+.fav {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  float: right;
+}
+
+.fav__fill__base {
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.fav__fill {
+  color: red;
+  padding: 0;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: red;
+  width: 110%;
+}
+
+.fav__base {
+  z-index: 0;
+  padding: 0;
 }

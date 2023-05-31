@@ -9,3 +9,5 @@
 > 1) 검색 : https://www.flaticon.com/kr/authors/smashicon 
 > 2) 사람 : https://www.flaticon.com/kr/authors/th-studio 
 > 3) 영화 : https://www.flaticon.com/kr/authors/designvector10
+> 4) 즐겨찾기 : https://www.flaticon.com/kr/authors/freepik
+> 5) 홈 : https://www.flaticon.com/kr/authors/creatype

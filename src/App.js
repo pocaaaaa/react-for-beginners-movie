@@ -6,6 +6,7 @@ import {
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
 import ScrollToTop from "./ScrollTop";
+import Fav from "./routes/Fav";
 
 /*
   BrowserRouter에서 URL은 보통의 웹사이트처럼 생김. 
@@ -18,6 +19,9 @@ function App() {
       <Switch>
         <Route path="/hello">
           <h1>Hello</h1>
+        </Route>
+        <Route path="/fav">
+          <Fav/>
         </Route>
         <Route path="/movie/:id">
           <Detail/>

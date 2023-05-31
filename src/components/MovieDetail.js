@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import styles from "./MovieDetail.module.css";
 import { useEffect, useState } from "react";
 import SmilarMovie from "./SimilarMovie";
 import Cast from "./Cast";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function MovieDetail({id, coverImg, title, runtime, description, genres, rating, cast}) {
+  const navHist = useHistory();
+  
   /* state */
   const [smilarMovies, setSmilarMovies] = useState([]);
   const [smilarIsShow, setSmilarIsShow] = useState(false);
@@ -42,10 +44,10 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
           <h3 className={styles.movie__runtime}>
             {runtime} Minutes
             <div className={styles.star__ratings}>
-              <div className={`${styles.star__ratings__fill} ${styles.space__x__2}`} style={{width: `${rating * 10}%`}}>
+              <div className={`${styles.star__ratings__fill}`} style={{width: `${rating * 10}%`}}>
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
-              <div className={`${styles.star__ratings__base} ${styles.space__x__2}`}>
+              <div className={`${styles.star__ratings__base}`}>
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
             </div>
@@ -90,9 +92,7 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
         </div>
       </div>
       <div className={styles.btn__wrap}>
-        <Link to="/">
-          <button className={styles.btn}>목록</button>
-        </Link>
+        <button onClick={navHist.goBack} className={styles.btn}>목록</button>
       </div>
     </div>
   );
