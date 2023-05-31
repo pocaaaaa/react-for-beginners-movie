@@ -38,7 +38,7 @@ function Fav() {
           <div className={styles.moives__wrap}>
             <div className={styles.search}>
               <input className={styles.search__input} value={search} onChange={onChangeSearch} type="text" placeholder="Search"/>
-              <Link to="/"><img className={styles.home} alt="fav" src="/icon/home.png" /></Link>
+              <Link to="/"><img className={styles.home} alt="fav" src="./icon/home.png" /></Link>
             </div>
             {favList.length === 0 ? (
                 <div className={styles.movies__nodata}>

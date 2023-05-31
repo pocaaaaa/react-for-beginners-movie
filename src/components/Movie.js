@@ -42,7 +42,7 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
   return (
     <div className={`${styles.movie} ${isFavPage ? '' : styles.movie__main__temp}`}>
       <img 
-        src={!coverImg ? '/icon/movie.png' : coverImg} 
+        src={!coverImg ? './icon/movie.png' : coverImg} 
         alt={title} 
         className={styles.movie__img}
         onError={handleImgError} />

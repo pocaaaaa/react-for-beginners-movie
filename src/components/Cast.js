@@ -11,7 +11,7 @@ function Cast({characterName, name, urlSmallImg}) {
         <div className={styles.flex__item}>
             <div className={styles.box}>
                 <img 
-                    src={!urlSmallImg ? '/icon/user.png' : urlSmallImg} 
+                    src={!urlSmallImg ? './icon/user.png' : urlSmallImg} 
                     alt={characterName} 
                     className={styles.profile} 
                     onError={handleImgError}

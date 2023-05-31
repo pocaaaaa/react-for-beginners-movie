@@ -58,7 +58,7 @@ function Home() {
           <div className={styles.moives__wrap}>
             <div className={styles.search}>
               <input className={styles.search__input} onChange={searchOnChange} onKeyDown={handleKeyDown} value={searchValue} type="text" placeholder="Search"/>
-              <img onClick={searchMovies} className={styles.search__img} alt="search" src="/icon/search.png"/>
+              <img onClick={searchMovies} className={styles.search__img} alt="search" src="./icon/search.png"/>
               <Link to="/fav"><img className={styles.fav__home} alt="fav" src="/icon/fav.png" /></Link>
             </div>
             {movies.length === 0 ? (
