@@ -64,3 +64,13 @@
     padding-top: 35px;
     cursor: pointer;
   }
+
+  .home {
+    position: absolute;
+    width: 43px;
+    top: -3px;
+    right: -30px;
+    margin: 0;
+    padding-top: 35px;
+    cursor: pointer;
+  }

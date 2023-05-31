@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 import { useEffect, useState } from "react";
 
-function Movie({id, coverImg, title, year, summary, genres}) {
+function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavList}) {
+  /* state */
   const [isFav, setIsFav] = useState(false);
-
+  
   /* function */
   const handleImgError = (event) => {
     event.target.src = '../icon/movie.png';
@@ -21,6 +22,7 @@ function Movie({id, coverImg, title, year, summary, genres}) {
     let favList = localStorage.getItem('favList');
     favList = favList ? JSON.parse(favList).filter(item => item.id !== id) : [];
     localStorage.setItem('favList', JSON.stringify([...favList]));
+    setFavList(favList);
   }
   const favClick = () => {
     setIsFav((curr) => {
@@ -35,10 +37,10 @@ function Movie({id, coverImg, title, year, summary, genres}) {
     favList = favList ? JSON.parse(favList).filter(item => item.id === id) : [];
     if(favList.length > 0) setIsFav(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isFav]);
 
   return (
-    <div className={styles.movie}>
+    <div className={`${styles.movie} ${isFavPage ? '' : styles.movie__main__temp}`}>
       <img 
         src={!coverImg ? '../icon/movie.png' : coverImg} 
         alt={title} 

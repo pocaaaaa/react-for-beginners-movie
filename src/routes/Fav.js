@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Fav.module.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Fav() {
   /* state */
   const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
+  const [favList, setFavList] = useState([]);
   const [search, setSearch] = useState("");
   
   /* function */
   const getFav = async() => {
     let favList = localStorage.getItem('favList');
     favList = favList ? JSON.parse(favList) : []; 
-    setMovies(favList);
+    setFavList(favList);
     setLoading(false);
   };
 
   /* useEffect */
   useEffect(() => {
-    getFav()
+    getFav();
   }, [search]);
 
   // key는 React.js에서만 map안에서 component들을 render할 때 사용.
@@ -33,15 +34,16 @@ function Fav() {
             <div className={styles.search}>
               <input className={styles.search__input} value={search} onChange={setSearch} type="text" placeholder="Search"/>
               <img className={styles.search__img} alt="search" src="../icon/search.png"/>
+              <Link to="/"><img className={styles.home} alt="fav" src="../icon/home.png" /></Link>
             </div>
-            {movies.length === 0 ? (
+            {favList.length === 0 ? (
                 <div className={styles.movies__nodata}>
-                ❌ No matching search results found.
+                🙏 Please make a favorite.
                 </div>
               ) : (
                 <div>
                   <div className={styles.movies}>
-                    {movies.map((movie, index) => (
+                    {favList.map((movie, index) => (
                       <Movie
                         key={index}
                         id={movie.id}
@@ -50,7 +52,8 @@ function Fav() {
                         title={movie.title}
                         summary={movie.summary}
                         genres={movie.genres}
-
+                        isFavPage={true}
+                        setFavList={setFavList}
                       />
                     ))}
                   </div>
