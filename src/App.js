@@ -15,7 +15,7 @@ import Fav from "./routes/Fav";
 */
 function App() {
   return (
-    <Router basename="/react-for-beginners-movie">
+    <Router>
       <Switch>
         <Route path="/hello">
           <h1>Hello</h1>

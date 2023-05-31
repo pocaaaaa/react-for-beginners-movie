@@ -31,7 +31,7 @@ function Detail() {
     <div>
       {loading ? (
         <div className={styles.loader}>
-          <img src="../icon/camera.gif" alt="loading" className={styles.loading}/>
+          <img src="/../icon/camera.gif" alt="loading" className={styles.loading}/>
         </div>
       ) : (
         <div 

@@ -52,14 +52,14 @@ function Home() {
     <div className={styles.container}>
       {loading ? (
           <div className={styles.loader}>
-            <img src="./icon/camera.gif" alt="loading" className={styles.loading}/>
+            <img src="/../icon/camera.gif" alt="loading" className={styles.loading}/>
           </div>
         ) : (
           <div className={styles.moives__wrap}>
             <div className={styles.search}>
               <input className={styles.search__input} onChange={searchOnChange} onKeyDown={handleKeyDown} value={searchValue} type="text" placeholder="Search"/>
-              <img onClick={searchMovies} className={styles.search__img} alt="search" src="./icon/search.png"/>
-              <Link to="/fav"><img className={styles.fav__home} alt="fav" src="./icon/fav.png" /></Link>
+              <img onClick={searchMovies} className={styles.search__img} alt="search" src="/../icon/search.png"/>
+              <Link to="/fav"><img className={styles.fav__home} alt="fav" src="/../icon/fav.png" /></Link>
             </div>
             {movies.length === 0 ? (
                 <div className={styles.movies__nodata}>
