@@ -24,6 +24,7 @@ function Fav() {
   /* useEffect */
   useEffect(() => {
     getFav();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   // key는 React.js에서만 map안에서 component들을 render할 때 사용.

@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetail from "../components/MovieDetail";
 import styles from "./Detail.module.css";
+import { useHistory } from "react-router-dom";
 
 function Detail() {
+  const navHist = useHistory();
+
   /* state */
   const {id} = useParams();
   const [loading, setLoading] = useState(true);
@@ -44,6 +47,9 @@ function Detail() {
             rating={movie.rating}
             cast={movie.cast}
           />
+          <div className={styles.btn__wrap}>
+            <button onClick={navHist.goBack} className={styles.btn}>목록</button>
+          </div>
         </div>
       )}
     </div>

@@ -3,11 +3,8 @@ import styles from "./MovieDetail.module.css";
 import { useEffect, useState } from "react";
 import SmilarMovie from "./SimilarMovie";
 import Cast from "./Cast";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function MovieDetail({id, coverImg, title, runtime, description, genres, rating, cast}) {
-  const navHist = useHistory();
-  
   /* state */
   const [smilarMovies, setSmilarMovies] = useState([]);
   const [smilarIsShow, setSmilarIsShow] = useState(false);
@@ -90,9 +87,6 @@ function MovieDetail({id, coverImg, title, runtime, description, genres, rating,
             </div>
           ) : null}
         </div>
-      </div>
-      <div className={styles.btn__wrap}>
-        <button onClick={navHist.goBack} className={styles.btn}>목록</button>
       </div>
     </div>
   );
