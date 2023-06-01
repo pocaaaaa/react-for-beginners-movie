@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Fav.module.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 function Fav() {
   /* state */
@@ -42,7 +42,7 @@ function Fav() {
             </div>
             {favList.length === 0 ? (
                 <div className={styles.movies__nodata}>
-                🙏 Please make a favorite.
+                  { search ? '❌ No matching search results found.' : '🙏 Please make a favorite.' }
                 </div>
               ) : (
                 <div>

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetail from "../components/MovieDetail";
 import styles from "./Detail.module.css";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Detail() {
-  const navHist = useHistory();
+  const location = useLocation();
 
   /* state */
   const {id} = useParams();
@@ -48,7 +49,9 @@ function Detail() {
             cast={movie.cast}
           />
           <div className={styles.btn__wrap}>
-            <button onClick={navHist.goBack} className={styles.btn}>목록</button>
+            <Link to={location.state && location.state.isFavPage ? "/fav" : "/"}>
+              <button className={styles.btn}>목록</button>
+            </Link>
           </div>
         </div>
       )}

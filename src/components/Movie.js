@@ -50,7 +50,9 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
         onError={handleImgError} />
       <div>
         <h2 className={styles.movie__title}>
-          <Link to={`/movie/${id}`}>{title}</Link>
+          <Link to={{pathname: `/movie/${id}`, state: {isFavPage: isFavPage}}}>
+            {title}
+          </Link>
         </h2>
         <h3 className={styles.movie__year}>{year}</h3>
         <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
