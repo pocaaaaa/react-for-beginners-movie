@@ -9,7 +9,7 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
   
   /* function */
   const handleImgError = (event) => {
-    event.target.src = '/../icon/movie.png';
+    event.target.src = `${window.location.origin}/react-for-beginners-movie/icon/movie.png`;
   };
   const addFavList =  () => {
     let favList = localStorage.getItem('favList');
@@ -22,7 +22,9 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
     let favList = localStorage.getItem('favList');
     favList = favList ? JSON.parse(favList).filter(item => item.id !== id) : [];
     localStorage.setItem('favList', JSON.stringify([...favList]));
-    setFavList(favList);
+    if(setFavList) {
+      setFavList(favList);
+    }
   }
   const favClick = () => {
     setIsFav((curr) => {
@@ -42,7 +44,7 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
   return (
     <div className={`${styles.movie} ${isFavPage ? '' : styles.movie__main__temp}`}>
       <img 
-        src={!coverImg ? '/../icon/movie.png' : coverImg} 
+        src={!coverImg ? `${window.location.origin}/react-for-beginners-movie/icon/movie.png` : coverImg} 
         alt={title} 
         className={styles.movie__img}
         onError={handleImgError} />
