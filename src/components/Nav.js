@@ -15,10 +15,31 @@ function Nav({search, onChangeSearch, onKeyDownSearch, searchMovies}) {
         onKeyDown={onKeyDownSearch ? onKeyDownSearch : () => {}}
       />
       { (pathname === "/") ? (
-        <img onClick={searchMovies} className={styles.search__img} alt="search" src={`${window.location.origin}/react-for-beginners-movie/icon/search.png`} />
-        ) : null }
-      <Link to="/"><img className={styles.home} alt="fav" src={`${window.location.origin}/react-for-beginners-movie/icon/home.png`} /></Link>
-      <Link to="/fav"><img className={styles.fav__home} alt="fav" src={`${window.location.origin}/react-for-beginners-movie/icon/fav.png`} /></Link>
+        <img
+          onClick={searchMovies} 
+          className={styles.search__img} 
+          alt="search" 
+          src={`${window.location.origin}/react-for-beginners-movie/icon/search.png`} 
+        />
+      ) : null }
+      <Link to="/">
+        <img 
+          className={styles.home} 
+          alt="fav" 
+          src={pathname === "/" ? 
+                `${window.location.origin}/react-for-beginners-movie/icon/home_c.png` : 
+                `${window.location.origin}/react-for-beginners-movie/icon/home.png`} 
+        />
+      </Link>
+      <Link to="/fav">
+        <img 
+          className={styles.fav__home} 
+          alt="fav" 
+          src={pathname === "/fav" ? 
+                `${window.location.origin}/react-for-beginners-movie/icon/fav_c.png` : 
+                `${window.location.origin}/react-for-beginners-movie/icon/fav.png`} 
+        />
+      </Link>
     </div>
   );
 }
