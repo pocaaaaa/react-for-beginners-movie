@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Fav.module.css";
-import { Link } from "react-router-dom";
+import Nav from "../components/Nav";
 
 function Fav() {
   /* state */
@@ -36,10 +36,10 @@ function Fav() {
           </div>
         ) : (
           <div className={styles.moives__wrap}>
-            <div className={styles.search}>
-              <input className={styles.search__input} value={search} onChange={onChangeSearch} type="text" placeholder="Search"/>
-              <Link to="/"><img className={styles.home} alt="fav" src={`${window.location.origin}/react-for-beginners-movie/icon/home.png`} /></Link>
-            </div>
+            <Nav 
+              search={search}
+              onChangeSearch={onChangeSearch}
+            />
             {favList.length === 0 ? (
                 <div className={styles.movies__nodata}>
                   { search ? '❌ No matching search results found.' : '🙏 Please make a favorite.' }
