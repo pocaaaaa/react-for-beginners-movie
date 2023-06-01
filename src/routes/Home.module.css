@@ -61,40 +61,6 @@
   cursor: pointer;
 }
 
-.search {
-  position: relative;
-  width: 400px;
-  padding: 35px 50px 35px;
-}
-
-.search__input {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
-}
-
-.search__img {
-  position : absolute;
-  width: 17px;
-  top: 10px;
-  right: 35px;
-  margin: 0;
-  padding-top: 35px;
-  cursor: pointer;
-}
-
-.fav__home {
-  position: absolute;
-  width: 42px;
-  top: -5px;
-  right: -32px;
-  margin: 0;
-  padding-top: 35px;
-  cursor: pointer;
-}
-
 .loading {
   width: 300px;
   height: 300px;
