@@ -2,8 +2,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 import { useEffect, useState } from "react";
+import FavIcon from "./FavIcon";
 
 function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavList}) {
+  const pathname = window.location.pathname.replaceAll('/react-for-beginners-movie', '');
+
   /* state */
   const [isFav, setIsFav] = useState(false);
   
@@ -49,6 +52,12 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
         className={styles.movie__img}
         onError={handleImgError} />
       <div>
+        {pathname === "/" ? (
+          <FavIcon 
+            favClick={favClick} 
+            isFav={isFav}
+          />
+        ) : null}
         <h2 className={styles.movie__title}>
           <Link to={{pathname: `/movie/${id}`, state: {isFavPage: isFavPage}}}>
             {title}
@@ -66,14 +75,17 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
       </div>
       <div></div>
       <div>
-        <div className={styles.fav}>
-          <div className={`${styles.fav__fill__base} ${isFav ? styles.fav__fill : ''}`}>
-            <span onClick={favClick}>❤</span>
+        {pathname === "/fav" ? (
+            <FavIcon 
+              favClick={favClick} 
+              isFav={isFav}
+            />
+          ) : null}
+        {pathname === "/" ? (
+          <div className={styles.review}>
+            <button className={styles.review__button}>등록</button>
           </div>
-          <div className={styles.fav__base}>
-            <span>❤</span>
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );

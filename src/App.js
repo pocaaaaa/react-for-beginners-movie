@@ -23,6 +23,9 @@ function App() {
         <Route path="/fav">
           <Fav/>
         </Route>
+        <Route path="/reveiw">
+          <h1>Review</h1>
+        </Route>
         <Route path="/movie/:id">
           <Detail/>
         </Route>
