@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 import { useEffect, useState } from "react";
 import FavIcon from "./FavIcon";
+import ReviewModal from "./ReviewModal";
 
 function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavList}) {
   const pathname = window.location.pathname.replaceAll('/react-for-beginners-movie', '');
 
   /* state */
   const [isFav, setIsFav] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   
   /* function */
   const handleImgError = (event) => {
@@ -35,6 +37,8 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
       return !curr;  
     });
   };
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
   
   /* useEffect */
   useEffect(() => {
@@ -83,7 +87,16 @@ function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
           ) : null}
         {pathname === "/" ? (
           <div className={styles.review}>
-            <button className={styles.review__button}>등록</button>
+            <button className={styles.review__button} onClick={handleModalOpen}>등록</button>
+            {modalOpen && (
+              <ReviewModal 
+                onClose={handleModalClose}
+                id={id}
+                title={title}
+                coverImg={coverImg}
+                year={year}
+              />
+            )}
           </div>
         ) : null}
       </div>
