@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import FavIcon from "./FavIcon";
 import ReviewModal from "./ReviewModal";
 
-function Movie({id, coverImg, title, year, summary, genres, isFavPage, setFavList}) {
+const Movie = ({id, coverImg, title, year, summary, genres, isFavPage, setFavList}) => {
   const pathname = window.location.pathname.replaceAll('/react-for-beginners-movie', '');
 
   /* state */

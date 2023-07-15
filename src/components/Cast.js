@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styles from "./Cast.module.css";
 
-function Cast({characterName, name, urlSmallImg}) {
+const Cast = ({characterName, name, urlSmallImg}) => {
     /* function */
     const handleImgError = (event) => {
         event.target.src = `${window.location.origin}/react-for-beginners-movie/icon/user.png`;

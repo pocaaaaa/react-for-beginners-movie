@@ -14,3 +14,4 @@
 > 4) 즐겨찾기 : https://www.flaticon.com/kr/authors/freepik
 > 5) 홈 : https://www.flaticon.com/kr/authors/creatype
 > 6) 로딩 : https://www.flaticon.com/kr/free-animated-icon/video-camera_8121309?related_id=8121309
+> 7) 리뷰 : https://www.flaticon.com/kr/authors/freepik

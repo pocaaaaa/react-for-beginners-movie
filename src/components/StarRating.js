@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./StarRating.module.css";
 
-const StarRating = () => {
+const StarRating = ({starClick}) => {
   return (
     <div className={styles.star__rating}>
       <input
@@ -10,8 +10,9 @@ const StarRating = () => {
         name="rating"
         value="5"
         v-model="ratings"
+        onClick={starClick}
       />
-      <label for="5-stars">
+      <label htmlFor="5-stars">
         ★
       </label>
       <input
@@ -20,8 +21,9 @@ const StarRating = () => {
         name="rating"
         value="4"
         v-model="ratings"
+        onClick={starClick}
       />
-      <label for="4-stars">
+      <label htmlFor="4-stars">
         ★
       </label>
       <input
@@ -30,8 +32,9 @@ const StarRating = () => {
         name="rating"
         value="3"
         v-model="ratings"
+        onClick={starClick}
       />
-      <label for="3-stars">
+      <label htmlFor="3-stars">
         ★
       </label>
       <input
@@ -40,8 +43,9 @@ const StarRating = () => {
         name="rating"
         value="2"
         v-model="ratings"
+        onClick={starClick}
       />
-      <label for="2-stars">
+      <label htmlFor="2-stars">
         ★
       </label>
       <input
@@ -50,8 +54,9 @@ const StarRating = () => {
         name="rating"
         value="1"
         v-model="ratings"
+        onClick={starClick}
       />
-      <label for="1-star">
+      <label htmlFor="1-star">
         ★
       </label>
     </div>

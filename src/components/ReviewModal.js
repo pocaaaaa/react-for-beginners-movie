@@ -8,16 +8,23 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
   const [password, setPassword] = useState("");
   const [review, setReview] = useState("");
   const [date, setDate] = useState("");
+  const [rating, setRating] = useState("");
 
   /* ref */
   const userIdRef = useRef();
   const passwordRef = useRef();
   const reviewRef = useRef();
   const dateRef = useRef();
+  const ratingRef = useRef();
 
   /* function */
+  const handleImgError = (event) => {
+    event.target.src = `${window.location.origin}/react-for-beginners-movie/icon/movie.png`;
+  };
+
   const handleIdChange = (event) => {
-    setUserId(event.target.value);
+    const value = event.target.value.replace(/[^0-9A-Za-z~!@#$%^&*()_+|<>?:{}.]/ig, '');
+    setUserId(value);
   };
 
   const handlePasswordChange = (event) => {
@@ -32,10 +39,37 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
     setDate(event.target.value);
   };
 
+  const handleRatingChange = (event) => {
+    setRating(event.target.value);
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
     if(!isValid()) return false;
 
+    // 1. 사용자 조회 (존재하지 않으면 추가)
+    let userList = localStorage.getItem('userList');
+    userList = userList ? JSON.parse(userList) : [];
+    userList = userList.filter(user => user?.id === userId && user?.password === password);
+    
+    let userInfo;
+    if(userList && userList.length > 0) {
+      userInfo = userList[0]; 
+    } else {
+      userInfo = {id: userId, password: password, key: getUserKey()};
+      localStorage.setItem('userList', JSON.stringify([...userList, userInfo]));
+    }
+
+    // 2. 리뷰 추가
+    let reviewList = localStorage.getItem('reviewList');
+    reviewList = reviewList ? JSON.parse(reviewList) : [];
+    const addReviewItem = setReviewData(userInfo?.key);
+    const newReviewList = [...reviewList, addReviewItem];
+    localStorage.setItem('reviewList', JSON.stringify(newReviewList));
+
+    // 3. 팝업 닫기
+    alert("You have registered.");
+    onClose();
   };
 
   const isValid = () => {
@@ -71,18 +105,50 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
       return false;
     }
 
-    if(review.length < 200) {
-      alert("Review is at least 200 characters.");
-      return;
+    if(review.length < 50) {
+      alert("Review is at least 50 characters.");
+      reviewRef.current.focus();
+      return false;
     }
 
-    // Perform registration logic here
-    console.log("ID:", userId);
-    console.log("Password:", password);
-    console.log("Review:", review);
-    console.log("Date:", date);
-    onClose(); // Close the modal after registration
+    if(!rating) {
+      alert("Please select it star rating.");
+      ratingRef.current.focus();
+      return false;
+    }
     
+    return true;
+  };
+
+  const setReviewData = (userKey) => {
+    return {
+      movieInfo: {
+        id: id,
+        title: title,
+        coverImg: coverImg, 
+        year: year
+      },
+      userKey: userKey,
+      review: review,
+      date: date,
+      rating: rating
+    }
+  };
+
+  const getUserKey = () => {
+    const date = new Date();
+    const year = date.getFullYear().toString();
+    let month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+    let day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();
+    let hour = date.getHours();
+    hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+    let minites = date.getMinutes();
+    minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+    let seconds = date.getSeconds();
+    seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+    return userId + '__' + year + month + day + hour + minites + seconds;
   };
 
   return (
@@ -92,9 +158,13 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
           &times;
         </span>
         <div className={styles.review__header}>
-          <div className={styles.review__image}>
+          <div className={styles.review__image__wrap}>
             <img 
-              src={!coverImg ? `${window.location.origin}/react-for-beginners-movie/icon/movie.png` : coverImg} alt={title} />
+              src={!coverImg ? `${window.location.origin}/react-for-beginners-movie/icon/movie.png` : coverImg} 
+              alt={title}
+              onError={handleImgError}
+              className={styles.review__image}
+            />
           </div>
           <div>
             <h2>{title}{`${year ? ' ('+year+')' : ''}`}</h2>
@@ -148,8 +218,8 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
           />
         </div>
         <div className={styles.input__container}>
-          <label htmlFor="horoscope">Star Rating</label>
-          <StarRating/>
+          <label ref={ratingRef}>Star Rating</label>
+          <StarRating starClick={handleRatingChange} />
         </div>
         <button type="submit" onClick={onSubmit} className={styles.btn__register}>
           Register

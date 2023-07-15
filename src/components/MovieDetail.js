@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import SmilarMovie from "./SimilarMovie";
 import Cast from "./Cast";
 
-function MovieDetail({id, coverImg, title, runtime, description, genres, rating, cast}) {
+const MovieDetail = ({id, coverImg, title, runtime, description, genres, rating, cast}) => {
   /* state */
   const [smilarMovies, setSmilarMovies] = useState([]);
   const [smilarIsShow, setSmilarIsShow] = useState(false);

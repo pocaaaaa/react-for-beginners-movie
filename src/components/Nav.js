@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
 
-function Nav({search, onChangeSearch, onKeyDownSearch, searchMovies}) {
+const Nav = ({search, onChangeSearch, onKeyDownSearch, searchMovies}) => {
   const pathname = window.location.pathname.replaceAll('/react-for-beginners-movie', '');
 
   return (
@@ -38,6 +38,15 @@ function Nav({search, onChangeSearch, onKeyDownSearch, searchMovies}) {
           src={pathname === "/fav" ? 
                 `${window.location.origin}/react-for-beginners-movie/icon/fav_c.png` : 
                 `${window.location.origin}/react-for-beginners-movie/icon/fav.png`} 
+        />
+      </Link>
+      <Link to="/review">
+        <img
+          className={styles.review__home}
+          alt="review"
+          src={pathname === "/review" ? 
+                `${window.location.origin}/react-for-beginners-movie/icon/review_c.png` : 
+                `${window.location.origin}/react-for-beginners-movie/icon/review.png`}
         />
       </Link>
     </div>

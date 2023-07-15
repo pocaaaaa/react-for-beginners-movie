@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./SimilarMovie.module.css";
 import PropTypes from "prop-types";
 
-function SmilarMovie({id, coverImg, title}) {
+const SmilarMovie = ({id, coverImg, title}) => {
   return (
       <Link to={`/movie/${id}`}>
         <img 
