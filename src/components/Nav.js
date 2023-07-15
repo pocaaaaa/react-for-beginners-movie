@@ -14,7 +14,7 @@ const Nav = ({search, onChangeSearch, onKeyDownSearch, searchMovies}) => {
         placeholder="Search"
         onKeyDown={onKeyDownSearch ? onKeyDownSearch : () => {}}
       />
-      { (pathname === "/") ? (
+      { (pathname === "/" || pathname === "") ? (
         <img
           onClick={searchMovies} 
           className={styles.search__img} 
@@ -26,7 +26,7 @@ const Nav = ({search, onChangeSearch, onKeyDownSearch, searchMovies}) => {
         <img 
           className={styles.home} 
           alt="fav" 
-          src={pathname === "/" ? 
+          src={(pathname === "/" || pathname === "") ? 
                 `${window.location.origin}/react-for-beginners-movie/icon/home_c.png` : 
                 `${window.location.origin}/react-for-beginners-movie/icon/home.png`} 
         />
