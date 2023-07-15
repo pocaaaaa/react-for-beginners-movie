@@ -3,7 +3,7 @@ import Movie from "../components/Movie";
 import styles from "./Fav.module.css";
 import Nav from "../components/Nav";
 
-function Fav() {
+const Fav = () => {
   /* state */
   const [loading, setLoading] = useState(true);
   const [favList, setFavList] = useState([]);

@@ -5,7 +5,7 @@ import styles from "./Detail.module.css";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function Detail() {
+const Detail = () => {
   const location = useLocation();
 
   /* state */

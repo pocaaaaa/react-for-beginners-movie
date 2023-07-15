@@ -3,7 +3,7 @@ import Movie from "../components/Movie";
 import styles from "./Home.module.css";
 import Nav from "../components/Nav";
 
-function Home() {
+const Home = () => {
   /* state */
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);

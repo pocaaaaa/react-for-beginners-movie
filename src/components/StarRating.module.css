@@ -1,0 +1,29 @@
+.star__rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  justify-content: space-around;
+  text-align: center;
+  width: 6em;
+}
+
+.star__rating input {
+  display: none;
+}
+
+.star__rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+
+.star__rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+
+.star__rating label:hover,
+.star__rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
