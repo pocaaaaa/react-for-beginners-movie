@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./StarRating.module.css";
 
+// 출처 : melthleeth님의 블로그 (https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating) 를
+// 인용해서 만들었습니다.
 const StarRating = ({starClick}) => {
   return (
     <div className={styles.star__rating}>

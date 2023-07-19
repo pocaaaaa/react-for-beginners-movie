@@ -56,7 +56,7 @@ const Movie = ({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
         className={styles.movie__img}
         onError={handleImgError} />
       <div>
-        {pathname === "/" ? (
+        {(pathname === "/" || pathname === "") ? (
           <FavIcon 
             favClick={favClick} 
             isFav={isFav}
@@ -85,9 +85,9 @@ const Movie = ({id, coverImg, title, year, summary, genres, isFavPage, setFavLis
               isFav={isFav}
             />
           ) : null}
-        {pathname === "/" ? (
+        {(pathname === "/" || pathname === "") ? (
           <div className={styles.review}>
-            <button className={styles.review__button} onClick={handleModalOpen}>등록</button>
+            <button className={styles.review__button} onClick={handleModalOpen}>Register</button>
             {modalOpen && (
               <ReviewModal 
                 onClose={handleModalClose}
