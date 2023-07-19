@@ -83,7 +83,7 @@ const Home = () => {
                   {moviesCount - (page * 20) > 20 ? (
                     <div className={styles.btn__wrap}>
                       <button onClick={moreMovies} className={styles.btn}>
-                        더보기 ({page})
+                        More ({page})
                       </button>
                     </div>
                   ) : null}

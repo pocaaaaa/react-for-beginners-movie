@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./ReviewModal.module.css";
-import StarRating from "./StarRating";
+import NewStarRating from "./NewStarRating";
 
 const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
   /* state */
@@ -39,8 +39,8 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
     setDate(event.target.value);
   };
 
-  const handleRatingChange = (event) => {
-    setRating(event.target.value);
+  const handleRatingChange = (value) => {
+    setRating(value);
   };
 
   const onSubmit = (event) => {
@@ -219,7 +219,7 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
         </div>
         <div className={styles.input__container}>
           <label ref={ratingRef}>Star Rating</label>
-          <StarRating starClick={handleRatingChange} />
+          <NewStarRating starClick={handleRatingChange} />
         </div>
         <button type="submit" onClick={onSubmit} className={styles.btn__register}>
           Register
