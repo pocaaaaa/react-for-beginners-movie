@@ -29,7 +29,7 @@ const Cast = ({characterName, name, urlSmallImg}) => {
 Cast.propTypes = {
     characterName: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    urlSmallImg: PropTypes.string.isRequired
+    urlSmallImg: PropTypes.string
 };
 
 export default Cast;
