@@ -14,7 +14,7 @@ const MovieDetail = ({id, coverImg, title, runtime, description, genres, rating,
     const json = await (await fetch(
       `https://yts.mx/api/v2/movie_suggestions.json?movie_id=${id}`
     )).json();
-    if(json.data.movie_count === 0) return;
+    if(json.data?.movies?.length === 0) return;
     setSmilarMovies(json.data.movies);
     setSmilarIsShow(true);
   };
