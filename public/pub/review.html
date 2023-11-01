@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Review Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .movie-review {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .movie-image {
+      width: 100px;
+      height: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .movie-details {
+      flex: 1;
+    }
+
+    .movie-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .movie-date {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .movie-review-text {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .star-container {
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .star {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-image: url('https://i.imgur.com/57Q7fLd.png');
+      background-size: contain;
+      margin-right: 2px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="movie-review">
+    <img class="movie-image" src="movie1.jpg" alt="Movie 1">
+    <div class="movie-details">
+      <div class="movie-title">Movie Title 1</div>
+      <div class="movie-date">Watched on: 2023-06-15</div>
+      <div class="movie-review-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae velit quis enim mollis elementum vel nec velit.
+      </div>
+      <div class="star-container">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="movie-review">
+    <img class="movie-image" src="movie2.jpg" alt="Movie 2">
+    <div class="movie-details">
+      <div class="movie-title">Movie Title 2</div>
+      <div class="movie-date">Watched on: 2023-06-10</div>
+      <div class="movie-review-text">
+        Quisque consectetur, augue eu blandit efficitur, ipsum tortor fermentum ex, at euismod erat eros non enim.
+      </div>
+      <div class="star-container">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add more movie reviews here -->
+</body>
+</html>

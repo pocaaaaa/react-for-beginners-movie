@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styles from "./Review.module.css";
 import Nav from "../components/Nav";
 import Login from "../components/Login";
+import ReviewDetail from "../components/ReviewDetail";
 import styled from "@emotion/styled";
 
-const Body = styled.div`
+const LoginBody = styled.div`
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
   margin: 0;
@@ -13,6 +14,12 @@ const Body = styled.div`
   justify-content: center;
   align-items: center;
   height: 80vh;
+`;
+
+const ReviewBody = styled.div`
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 `;
 
 const Review = () => {
@@ -30,9 +37,16 @@ const Review = () => {
           {/* <div className={styles.reviews__nodata}>
             준비중입니다.
           </div> */}
-          <Body>
+          {/* <LoginBody>
             <Login />
-          </Body>
+          </LoginBody> */}
+          <ReviewBody>
+            <ReviewDetail />
+            <ReviewDetail />
+            <ReviewDetail />
+            <ReviewDetail />
+            <ReviewDetail />
+          </ReviewBody>
         </div>
       )}
     </div>
