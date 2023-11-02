@@ -43,7 +43,7 @@ const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
-const Login = () => {
+const Login = ({setIsLogin, setUserKey}) => {
   /* state */
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -53,10 +53,6 @@ const Login = () => {
   const passwordRef = useRef();
 
   /* function */
-  const getCookie = () => {
-
-  };
-
   const setCookie = (name, value, exp) => {
     const date = new Date();
     date.setTime(date.getTime() + exp*24*60*60*1000);
@@ -89,11 +85,18 @@ const Login = () => {
     userList = userList.filter(user => user.id === userId && user.password === password);
     
     if(userList && userList.length > 0) {
-      alert("사용자 있음!!!");
-      //setCookie("userKey", userList[0].userKey, 1);
+      setCookie("userKey", userList[0].key, 1);
+      setUserInfo(userList[0].key);
     } else {
-      alert("사용자 없음!!!");
+      alert("Please check your ID or password.");
+      userIdRef.current.focus();
+      return;
     }
+  };
+
+  const setUserInfo = (userKey) => {
+    setIsLogin(true);
+    setUserKey(userKey);
   };
 
   return (

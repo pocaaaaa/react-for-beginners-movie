@@ -8,7 +8,7 @@ const MovieReview = styled.div`
   margin: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 35px 30px 35px 30px;
+  background: #CBEDF1;
 `;
 
 const MovieImage = styled.img`
