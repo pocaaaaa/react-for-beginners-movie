@@ -16,6 +16,7 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
   const reviewRef = useRef();
   const dateRef = useRef();
   const ratingRef = useRef();
+  const outside = useRef();	
 
   /* function */
   const handleImgError = (event) => {
@@ -152,7 +153,10 @@ const ReviewModal = ({ onClose, id, title, coverImg, year }) => {
   };
 
   return (
-    <div className={styles.modal}>
+    <div
+      className={styles.modal}
+      ref={outside}
+      onClick={ (e) => { if(e.target == outside.current) onClose() } }>
       <div className={styles.modal__content}>
         <span className={styles.close} onClick={onClose}>
           &times;
